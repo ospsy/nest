@@ -9,7 +9,7 @@ clock=2.5
 mul_add=2
 n_cores=2
 vector_length=4
-theoretical_peak_GFLOPS=clock*mul_add*n_cores*vect
+theoretical_peak_GFLOPS=clock*mul_add*n_cores*vector_length*2
 print "theoretical_peak GFLOPS", theoretical_peak_GFLOPS
 
 n_neuron=1
@@ -24,7 +24,7 @@ nest.Simulate(simulation_time)
 computation_time=(time.time() - start_time)
 print("---%s calculation time (sec) ---" %computation_time)
 
-n_fpo_totoal=n_fpo_lms * simulation_time * n_neuron
+n_fpo_total=n_fpo_lms * simulation_time * n_neuron
 print "number of flops: ", n_fpo_total
 
 effective_GFLOPS = n_fpo_total / computation_time / (100**9)
